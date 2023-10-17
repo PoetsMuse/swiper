@@ -4,10 +4,17 @@ import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs
 
 const swiper = new Swiper('.swiper', {
     // Optional parameters
-    direction: 'vertical',
+    observeParents: true,
+    observer: true, 
+    direction: 'horizontal',
+    slidesPerView: 3,
     loop: true,
+    autoplay:{
+      delay: 5000,
+      disableOnInteraction: false
+    },
   
-    // If we need pagination
+    // pagination
     pagination: {
       el: '.swiper-pagination',
     },
@@ -18,8 +25,9 @@ const swiper = new Swiper('.swiper', {
       prevEl: '.swiper-button-prev',
     },
   
-    // And if we need scrollbar
+    // scrollbar
     scrollbar: {
       el: '.swiper-scrollbar',
     },
+
   });
