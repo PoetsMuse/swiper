@@ -1,33 +1,17 @@
 import './modules/swiper.mjs'
 import products from './modules/products.mjs';
+import { newElement } from './modules/domHelpers.mjs';
 
 // Function to create a product card element
 function createProductCard(product) {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.width = '18rem';
+    const card = newElement('div', null, null, 'card', { style: 'width: 18rem;' });
 
-    const image = document.createElement('img');
-    image.src = product.image;
-    image.className = 'card-img-top';
-    image.alt = 'Product image';
+    newElement('img', card, null, 'card-img-top', { src: product.image, alt: 'Product image' });
 
-    const cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
+    const cardBody = newElement('div', card, null, 'card-body');
 
-    const title = document.createElement('h5');
-    title.className = 'card-title';
-    title.textContent = product.name;
-
-    const price = document.createElement('p');
-    price.className = 'card-text';
-    price.textContent = `Product price: ${product.price.amount} ${product.price.currency}`;
-
-    cardBody.appendChild(title);
-    cardBody.appendChild(price);
-
-    card.appendChild(image);
-    card.appendChild(cardBody);
+    newElement('h5', cardBody, product.name, 'card-title');
+    newElement('p', cardBody, `Product price: ${product.price.amount} ${product.price.currency}`, 'card-text');
 
     return card;
 }
